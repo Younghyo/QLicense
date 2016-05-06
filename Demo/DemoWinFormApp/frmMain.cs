@@ -25,9 +25,15 @@ namespace DemoWinFormApp
             if (File.Exists("license.lic"))
             {
                 _lic = (MyLicense)LicenseHandler.ParseLicenseFromBASE64String(typeof(MyLicense), File.ReadAllText("license.lic"), "LicenseVerify.cer", out _status, out _msg);
+                string AppName = "DemoWinFormApp";
+                if (_lic.UID != LicenseHandler.GenerateUID(AppName))
+                {
+                    _status = LicenseStatus.ANOTHER;
+                    _msg = "Your copy of this application is wrong with your computer";
+                }
             }
             else
-            {                
+            {
                 _status = LicenseStatus.INVALID;
                 _msg = "Your copy of this application is not activated";
             }
@@ -42,7 +48,7 @@ namespace DemoWinFormApp
 
                     //Here for demo, just show the license information and RETURN without additional checking       
                     licInfo.ShowLicenseInfo(_lic);
-                            
+
                     return;
 
                 default:
@@ -57,11 +63,16 @@ namespace DemoWinFormApp
                         //Exit the application after activation to reload the license file 
                         //Actually it is not nessessary, you may just call the API to reload the license file
                         //Here just simplied the demo process
-                        
+
                         Application.Exit();
                     }
                     break;
             }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,19 +35,20 @@
             // 
             this.licInfo.DateFormat = null;
             this.licInfo.DateTimeFormat = null;
-            this.licInfo.Location = new System.Drawing.Point(12, 12);
+            this.licInfo.Location = new System.Drawing.Point(14, 11);
             this.licInfo.Name = "licInfo";
-            this.licInfo.Size = new System.Drawing.Size(300, 300);
+            this.licInfo.Size = new System.Drawing.Size(350, 277);
             this.licInfo.TabIndex = 0;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 330);
+            this.ClientSize = new System.Drawing.Size(378, 305);
             this.Controls.Add(this.licInfo);
             this.Name = "frmMain";
             this.Text = "DemoWinFormApp";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.ResumeLayout(false);
 
